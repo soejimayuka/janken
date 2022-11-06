@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <title>「ジブリ」オタク検定</title>
+  </head>
+
+  <body id="js-body" class="l-body -gamepage">
+    <div id="js-totoro">
+      <div class="toto_a">
+        <img src="../img/a01.gif" alt="" />
+      </div>
+      <div class="toto_b">
+        <img src="../img/a02.gif" alt="" />
+      </div>
+    </div>
+    <header>
+      <h1 id="js-heading" class="heading">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="95" viewBox="0 0 1012 95">
+          <g id="グループ_24" data-name="グループ 24" transform="translate(-112 -33)">
+            <g id="グループ_23" data-name="グループ 23">
+              <text
+                id="_ジブリ_"
+                data-name="「ジブリ」"
+                transform="translate(365 115)"
+                fill="#212121"
+                font-size="95"
+                font-family="STHeitiTC-Medium, Heiti TC"
+                font-weight="500"
+                letter-spacing="0.08em"
+              >
+                <tspan x="-252.7" y="0">「ジブリ」</tspan>
+              </text>
+              <text
+                id="オタク検定"
+                transform="translate(871 115)"
+                fill="#212121"
+                font-size="95"
+                font-family="STHeitiTC-Medium, Heiti TC"
+                font-weight="500"
+                letter-spacing="0.08em"
+              >
+                <tspan x="-252.7" y="0">オタク検定</tspan>
+              </text>
+            </g>
+          </g>
+        </svg>
+      </h1>
+    </header>
+
+    <main>
+      <div id="js-bou">
+        <div class="bg-animation -keyframe3">
+          <img src="../img/bou.png" class="keyframe3 animation" alt="" />
+        </div>
+      </div>
+      <div id="js-kekkaArea"></div>
+      <div id="js-kekkaBtn" class="kekkaBtn">
+        <div class="btn -next -repeat"><a href="../index.html">トップへ戻る</a></div>
+        <div class="btn -next -repeat"><a href="index.html">もう一度プレイ</a></div>
+        <div class="btn -next -ending"><a href="../ending/index.html">エンディング</a></div>
+      </div>
+      <div id="js-question"></div>
+      <div class="choice">
+        <button class="btn" type="button"></button>
+        <button class="btn" type="button"></button>
+        <button class="btn" type="button"></button>
+      </div>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      //ここに処理を追加
+
+      // img作成
+      const totoro1 = document.createElement("img");
+      totoro1.src = "../img/a01.gif";
+      totoro1.alt = "トトロ喜び";
+      const totoro2 = document.createElement("img");
+      totoro2.src = "../img/a02.gif";
+      totoro2.alt = "トトロ驚き";
+
+      const img01 = document.createElement("img");
+      img01.src = "../img/chihiro020.jpg";
+      img01.alt = "千と千尋の神隠し";
+      const img02 = document.createElement("img");
+      img02.src = "../img/porco041.jpg";
+      img02.alt = "紅の豚";
+      const img03 = document.createElement("img");
+      img03.src = "../img/mimi033.jpg";
+      img03.alt = "耳をすませば";
+      const img04 = document.createElement("img");
+      img04.src = "../img/howl016.jpg";
+      img04.alt = "ハウルの動く城";
+      const img05 = document.createElement("img");
+      img05.src = "../img/kazetachinu049.jpg";
+      img05.alt = "風立ちぬ";
+      const img06 = document.createElement("img");
+      img06.src = "../img/mononoke023.jpg";
+      img06.alt = "もののけ姫";
+      const img07 = document.createElement("img");
+      img07.src = "../img/laputa040.jpg";
+      img07.alt = "天空の城ラピュタ";
+      const img08 = document.createElement("img");
+      img08.src = "../img/omoide018.jpg";
+      img08.alt = "おもひでぽろぽろ";
+      const img09 = document.createElement("img");
+      img09.src = "../img/karigurashi006.jpg";
+      img09.alt = "借りぐらしのアリエッティ";
+      const img10 = document.createElement("img");
+      img10.src = "../img/nausicaa023.jpg";
+      img10.alt = "風の谷のナウシカ";
+
+      const quiz = [
+        {
+          quesiton: img01,
+          answers: ["千と千尋の神隠し", "崖の上のポニョ", "借りぐらしのアリエッティ"],
+          correct: "千と千尋の神隠し",
+        },
+        {
+          quesiton: img02,
+          answers: ["おもひでぽろぽろ", "ハウルの動く城", "紅の豚"],
+          correct: "紅の豚",
+        },
+        {
+          quesiton: img03,
+          answers: ["耳をすませば", "コクリコ坂から", "平成狸合戦ぽんぽこ"],
+          correct: "耳をすませば",
+        },
+        {
+          quesiton: img04,
+          answers: ["天空の城ラピュタ", "ハウルの動く城", "思い出のマーニー"],
+          correct: "ハウルの動く城",
+        },
+        {
+          quesiton: img05,
+          answers: ["コクリコ坂から", "火垂るの墓", "風立ちぬ"],
+          correct: "風立ちぬ",
+        },
+        {
+          quesiton: img06,
+          answers: ["千と千尋の神隠し", "もののけ姫", "ゲド戦記"],
+          correct: "もののけ姫",
+        },
+        {
+          quesiton: img07,
+          answers: ["魔女の宅急便", "となりのトトロ", "天空の城ラピュタ"],
+          correct: "天空の城ラピュタ",
+        },
+        {
+          quesiton: img08,
+          answers: ["おもひでぽろぽろ", "アーヤと魔女", "耳をすませば"],
+          correct: "おもひでぽろぽろ",
+        },
+        {
+          quesiton: img09,
+          answers: ["借りぐらしのアリエッティ", "猫の恩返し", "紅の豚"],
+          correct: "借りぐらしのアリエッティ",
+        },
+        {
+          quesiton: img10,
+          answers: ["風の谷のナウシカ", "千と千尋の神隠し", "天空の城ラピュタ"],
+          correct: "風の谷のナウシカ",
+        },
+      ];
+      // 変数など初期設定
+      const quizLength = quiz.length;
+
+      let quizIndex = 0;
+      let score = 0;
+
+      const button = document.getElementsByTagName("button");
+
+      //クイズの問題画像を表示、選択肢を定義
+      const setupQuiz = () => {
+        const x = document.getElementById("js-question");
+        x.appendChild(quiz[quizIndex].quesiton);
+        x.classList.add("addimg");
+
+        let buttonIndex = 0;
+        let buttonLength = button.length;
+        while (buttonIndex < buttonLength) {
+          button[buttonIndex].textContent = quiz[quizIndex].answers[buttonIndex];
+          buttonIndex++;
+        }
+      };
+
+      //初回画面表示s
+      setupQuiz();
+
+      //========================
+      //ボタンを押したら
+      //========================
+      const clickHandler = (e) => {
+        if (quiz[quizIndex].correct === e.target.textContent) {
+          //正解したら　toto-a を2秒表示
+          let timerId;
+          function showBox() {
+            const toto = document.querySelector(".toto_a");
+            toto.classList.add("hyouzi");
+            timerId = setTimeout(closeBox, 1500);
+          }
+          function closeBox() {
+            clearTimeout(timerId);
+            const toto = document.querySelector(".toto_a");
+            toto.classList.remove("hyouzi");
+          }
+
+          showBox();
+          score++;
+        } else {
+          //不正解したら　toto-b を2秒表示
+          let timerId;
+          function showBox() {
+            const toto = document.querySelector(".toto_b");
+            toto.classList.add("hyouzi");
+            timerId = setTimeout(closeBox, 1500);
+          }
+          function closeBox() {
+            clearTimeout(timerId);
+            const toto = document.querySelector(".toto_b");
+            toto.classList.remove("hyouzi");
+          }
+          showBox();
+        }
+
+        //次の動作
+        quizIndex++;
+
+        if (quizIndex < quizLength) {
+          setupQuiz();
+        } else {
+          // 終了したら スコア表示
+          // 「js-question」「.choice」をdisplay:none
+          const z = document.getElementById("js-question");
+          z.classList.add("y");
+          const i = document.querySelector(".choice");
+          i.classList.add("y");
+          //結果画面の背景をチェンジ
+          const body = document.getElementById("js-body");
+
+          body.classList.remove("-gamepage");
+          body.classList.add("-kekkagamen");
+
+          //結果画面のheadingを消す
+          const heading = document.getElementById("js-heading");
+          heading.classList.add("-y");
+
+          //坊display:noneを表示　js-bou
+          const bou = document.getElementById("js-bou");
+          bou.classList.add("-y");
+
+          // 結果画面にボタンを表示
+          const u = document.getElementById("js-kekkaBtn");
+          u.classList.add("s");
+          // 「kekka-area」エリアに結果を作成→表示
+
+          const KekkaBox = document.createElement("div");
+          KekkaBox.classList.add("KekkaBox");
+
+          const KekkaBox2 = document.createElement("div");
+          KekkaBox2.classList.add("KekkaBox2");
+
+          const kekkaP1 = document.createElement("p");
+          kekkaP1.classList.add("kekkaP1");
+          kekkaP1.innerHTML = "あなたのオタク度は";
+
+          const kekkaP2 = document.createElement("p");
+          kekkaP2.classList.add("kekkaP2");
+          const kekkaTypes = ["神", "偉人", "フツウ", "凡人"];
+          if (score === 0) {
+            kekkaP2.innerHTML = kekkaTypes[3];
+          } else if (score === 1) {
+            kekkaP2.innerHTML = kekkaTypes[3];
+          } else if (score === 2) {
+            kekkaP2.innerHTML = kekkaTypes[3];
+          } else if (score === 3) {
+            kekkaP2.innerHTML = kekkaTypes[2];
+          } else if (score === 4) {
+            kekkaP2.innerHTML = kekkaTypes[2];
+          } else if (score === 5) {
+            kekkaP2.innerHTML = kekkaTypes[2];
+          } else if (score === 6) {
+            kekkaP2.innerHTML = kekkaTypes[2];
+          } else if (score === 7) {
+            kekkaP2.innerHTML = kekkaTypes[2];
+          } else if (score === 8) {
+            kekkaP2.innerHTML = kekkaTypes[1];
+          } else if (score === 9) {
+            kekkaP2.innerHTML = kekkaTypes[1];
+          } else if (score === 10) {
+            kekkaP2.innerHTML = kekkaTypes[0];
+          } else {
+          }
+
+          const kekkaP3 = document.createElement("p");
+          kekkaP3.classList.add("kekkaP3");
+          kekkaP3.innerHTML = "レベルです";
+
+          const kekkaU = document.createElement("p");
+          kekkaU.classList.add("kekkaU");
+          const kekkaUTypes = [
+            "あなたはれっきとしたジブリオタクですね！自信を持って周りの人に宣言しましょう！",
+            "あなたはかなりのジブリ好きですね。オタクまであと少し。これからも引き続きジブリ作品を楽しんでください。",
+            "ジブリマニアまであと一歩！見たことのない作品がまだあるはず。是非見てみて、ハマるかもしれませんよ。",
+            "残念ながらジブリ好きとは言えません…。ジブリの世界には楽しいことがいっぱいありますよ。",
+          ];
+          if (score === 0) {
+            kekkaU.innerHTML = kekkaUTypes[3];
+          } else if (score === 1) {
+            kekkaU.innerHTML = kekkaUTypes[3];
+          } else if (score === 2) {
+            kekkaU.innerHTML = kekkaUTypes[3];
+          } else if (score === 3) {
+            kekkaU.innerHTML = kekkaUTypes[2];
+          } else if (score === 4) {
+            kekkaU.innerHTML = kekkaUTypes[2];
+          } else if (score === 5) {
+            kekkaU.innerHTML = kekkaUTypes[2];
+          } else if (score === 6) {
+            kekkaU.innerHTML = kekkaUTypes[2];
+          } else if (score === 7) {
+            kekkaU.innerHTML = kekkaUTypes[1];
+          } else if (score === 8) {
+            kekkaU.innerHTML = kekkaUTypes[1];
+          } else if (score === 9) {
+            kekkaU.innerHTML = kekkaUTypes[1];
+          } else if (score === 10) {
+            kekkaU.innerHTML = kekkaUTypes[0];
+          } else {
+          }
+
+          const l = document.getElementById("js-kekkaArea");
+          l.appendChild(KekkaBox);
+          KekkaBox.appendChild(kekkaP1);
+          KekkaBox.appendChild(kekkaP2);
+          KekkaBox.appendChild(kekkaP3);
+          l.appendChild(KekkaBox2);
+          KekkaBox2.appendChild(kekkaU);
+        }
+      };
+
+      //ボタンをクリックしたら正誤判定
+      button[0].addEventListener("click", (e) => {
+        clickHandler(e);
+      });
+      button[1].addEventListener("click", (e) => {
+        clickHandler(e);
+      });
+      button[2].addEventListener("click", (e) => {
+        clickHandler(e);
+      });
+    </script>
+  </body>
+</html>
