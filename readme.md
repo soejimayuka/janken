@@ -2,7 +2,7 @@
 
 ## DEMO
 
-- デプロイしている場合は URL を記入（任意）
+- https://soejimayuka.github.io/janken/
 
 ## 紹介と使い方
 
